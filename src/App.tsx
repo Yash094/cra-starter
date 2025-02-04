@@ -1,7 +1,10 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, useContract, useActiveClaimConditionForWallet } from "@thirdweb-dev/react";
 import "./styles/Home.css";
 
 export default function Home() {
+  const { contract } = useContract("0x30ccb40b54cc0A2fF1E0be8C0fCe4301389596BB");
+  const { data: activeClaimPhase, isLoading: isActiveClaimPhaseLoading } = useActiveClaimConditionForWallet(contract, "0xC0bA74E3D4dA3273530E89080417C08daC7d984C");
+  console.log(activeClaimPhase)
   return (
     <main className="main">
       <div className="container">
